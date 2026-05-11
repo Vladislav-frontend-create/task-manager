@@ -64,23 +64,10 @@ function deleteTask() {
     task = "";
 }
 
-// ─── Статистика ───────────────────────────────────────────────────────────────
-function getStats() {
-    return {
-        currentTask: task || null,
-        completedTaskCount,
-    };
-}
-
-// ─── Тесты ───────────────────────────────────────────────────────────────────
-showTask();                          // "Задача отсутствует"
-setTask("Купить продукты");          // ✓ Задача добавлена
-showTask();                          // "Купить продукты"
-setTask("Съездить в сервис");        // ✗ уже есть задача
-setTask("");                         // ✗ пустая строка
-setTask(null);                       // ✗ null
-setTask(42);                         // ✗ не строка
-setTask("A".repeat(201));            // ✗ слишком длинная
-completeTask();                      // ✓ Задача завершена
-showTask();                          // "Задача отсутствует"
-console.log(getStats());             // { currentTask: null, completedTaskCount: 1 }
+showTask();                         // "Задача отсутствует"
+setTask("Купить продукты");         //  Задача добавится
+showTask();                         // "Купить продукты"
+setTask("Съездить в сервис");       // "Не могу добавить задачу, завершите или удалите предыдущую"
+completeTask();                     //  Задача завершится
+showTask();                         // "Задача отсутствует"
+console.log("Выполнено задач:", completedTaskCount);
