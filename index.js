@@ -7,17 +7,16 @@ let completedTaskCount = 0;
 function showTask() {
     if (task === "") {
         console.log("Задача отсутствует");
-    } else {
-        console.log(task);
+        return;
     }
 }
 //Добавление задачи
 function setTask(taskDescription) {
     if (task !== "") {
         console.log("Не могу добавить задачу, завершите или удалите предыдущую");
-    } else {
-        task = taskDescription;
+        return;
     }
+    task = taskDescription;
 }
 //Завершение задачи
 function completeTask() {
