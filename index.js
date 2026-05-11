@@ -22,18 +22,19 @@ function setTask(taskDescription) {
 function completeTask() {
     if (task === "") {
         console.log("Нет задачи для завершения");
-    } else {
+        return;
+    }
         task = "";
         completedTaskCount++;
-    }
+    
 }
 //Удаление задачи
 function deleteTask() {
     if (task === "") {
         console.log("Нет задачи для удаления");
-    } else {
-        task = "";
+        return;
     }
+        task = "";
 }
 
 showTask();                         // "Задача отсутствует"
