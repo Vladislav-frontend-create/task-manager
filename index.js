@@ -9,6 +9,7 @@ function showTask() {
         console.log("Задача отсутствует");
         return;
     }
+    console.log(task);
 }
 //Добавление задачи
 function setTask(taskDescription) {
@@ -17,6 +18,7 @@ function setTask(taskDescription) {
         return;
     }
     task = taskDescription;
+    console.log("Задача добавлена: " + task);
 }
 //Завершение задачи
 function completeTask() {
@@ -24,6 +26,7 @@ function completeTask() {
         console.log("Нет задачи для завершения");
         return;
     }
+        console.log('Задача "' + task + '" завершена');   
         task = "";
         completedTaskCount++;
     
@@ -34,6 +37,7 @@ function deleteTask() {
         console.log("Нет задачи для удаления");
         return;
     }
+        console.log('Задача "' + task + '" удалена');
         task = "";
 }
 
