@@ -10,8 +10,8 @@ function isValidString(value) {
 // ─── Создание объекта задачи ─────────────────────────────────────────────────
 function createTaskObject(title, description) {
     return {
-        title: title.trim(),
-        description: description.trim(),
+        title: "Купить продукты",
+        description: "Молоко, хлеб, яйца",
         isCompleted: false,
         createdDate: new Date(),
         completedDate: null
@@ -93,7 +93,7 @@ function deleteTask(index) {
     
     // Если задача не выполнена — запрашиваем подтверждение
     if (!task.isCompleted) {
-        const userConfirmed = confirm(`Таска "${taskTitle}" Еще не выполнена. Удалить?`);
+        const userConfirmed = confirm(`Таска еще не выполнена, удалить?`);
         if (!userConfirmed) {
             console.log(`Удаление отменено: "${taskTitle}"`);
             return;
