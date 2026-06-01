@@ -75,6 +75,7 @@ function completeTask(index) {
     // Завершаем задачу
     task.isCompleted = true;
     task.completedDate = new Date();
+    completedTasks.push(task);
     completedTaskCount++;
     
     console.log(`Задача "${task.title}" завершена!`);
