@@ -50,10 +50,10 @@ function showTask() {
     
     tasks.forEach((task, index) => {
         console.log(`\n[${index}] ${task.title}`);
-        console.log(`   Описание: ${task.description || "(нет)"}`);
-        console.log(`   Статус: ${task.isCompleted ? "✓ Выполнена" : "Не выполнена"}`);
-        console.log(`   Создана: ${task.createdDate.toLocaleString()}`);
-        console.log(`   Завершена: ${task.completedDate ? task.completedDate.toLocaleString() : "—"}`);
+        console.log(`Описание: ${task.description || "(нет)"}`);
+        console.log(`Статус: ${task.isCompleted ? "Выполнена" : "Не выполнена"}`);
+        console.log(`Создана: ${task.createdDate.toLocaleString()}`);
+        console.log(`Завершена: ${task.completedDate ? task.completedDate.toLocaleString() : "—"}`);
     });
 }
 
