@@ -1,5 +1,6 @@
 // ─── Состояние ───────────────────────────────────────────────────────────────
-const tasks = [];           
+const tasks = [];
+const completedTasks = [];
 let completedTaskCount = 0; 
 
 // ─── Вспомогательная функция валидации ───────────────────────────────────────
@@ -10,8 +11,8 @@ function isValidString(value) {
 // ─── Создание объекта задачи ─────────────────────────────────────────────────
 function createTaskObject(title, description) {
     return {
-        title: "Купить продукты",
-        description: "Молоко, хлеб, яйца",
+        title: title,
+        description: description,
         isCompleted: false,
         createdDate: new Date(),
         completedDate: null
