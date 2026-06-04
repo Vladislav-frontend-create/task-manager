@@ -75,12 +75,6 @@ function completeTask(index) {
 
 // ─── Удаление задачи по индексу ────────────────────────────────────
 function deleteTask(index) {
-    // Проверка индекса
-    if (index < 0 || index >= tasks.length) {
-        console.error(`Ошибка: индекс ${index} вне диапазона (0-${tasks.length - 1})`);
-        return;
-    }
-    
     const task = tasks[index];
     const taskTitle = task.title;
     
