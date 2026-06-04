@@ -33,7 +33,7 @@ function setTask(title, description) {
     }
     
     // Создаем объект задачи и добавляем в массив
-    const newTask = createTaskObject(title, finalDescription);
+    const newTask = createTaskObject(title, description);
     tasks.push(newTask);
     
     console.log(`Задача добавлена: "${newTask.title}"`);
