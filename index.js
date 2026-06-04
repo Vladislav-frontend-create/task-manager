@@ -1,7 +1,6 @@
 // ─── Состояние ───────────────────────────────────────────────────────────────
 const tasks = [];
 const completedTasks = [];
-let completedTaskCount = 0; 
 
 // ─── Вспомогательная функция валидации ───────────────────────────────────────
 function isValidString(value) {
@@ -11,8 +10,8 @@ function isValidString(value) {
 // ─── Создание объекта задачи ─────────────────────────────────────────────────
 function createTaskObject(title, description) {
     return {
-        title: title,
-        description: description,
+        title,
+        description,
         isCompleted: false,
         createdDate: new Date(),
         completedDate: null
@@ -32,8 +31,6 @@ function setTask(title, description) {
         console.error("Ошибка: описание должно быть строкой");
         return;
     }
-    
-    const finalDescription = description && description.trim() ? description.trim() : "";
     
     // Создаем объект задачи и добавляем в массив
     const newTask = createTaskObject(title, finalDescription);
