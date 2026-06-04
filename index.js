@@ -58,6 +58,11 @@ function showTask() {
 // ─── Завершение задачи по индексу ──────────────────────────────────
 function completeTask(index) {
     const task = tasks[index];
+
+    if (!task) {
+        console.error('Задача не найдена');
+        return;
+    }
     
     if (task.isCompleted) {
         console.warn(`Задача "${task.title}" уже выполнена`);
@@ -75,6 +80,11 @@ function completeTask(index) {
 // ─── Удаление задачи по индексу ────────────────────────────────────
 function deleteTask(index) {
     const task = tasks[index];
+    if (!task) {
+        console.error('Задача не найдена');
+        return;
+    }
+    
     const taskTitle = task.title;
     
     // Если задача не выполнена — запрашиваем подтверждение
