@@ -57,12 +57,6 @@ function showTask() {
 
 // ─── Завершение задачи по индексу ──────────────────────────────────
 function completeTask(index) {
-    // Проверка индекса
-    if (index < 0 || index >= tasks.length) {
-        console.error(`Ошибка: индекс ${index} вне диапазона (0-${tasks.length - 1})`);
-        return;
-    }
-    
     const task = tasks[index];
     
     if (task.isCompleted) {
