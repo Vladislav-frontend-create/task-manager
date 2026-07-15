@@ -39,13 +39,13 @@ function setTask(title, description) {
     console.log(`Задача добавлена: "${newTask.title}"`);
 }
 
-// ─── Отображение всех задач ────────────────────────────────────────
-function showTask() {
+// ─── 7. Отображение всех задач (с методами массивов) ────────────────────────
+function showTasks() {
     if (tasks.length === 0) {
         console.log("Список задач пуст");
         return;
     }
-    
+
     tasks.forEach((task, index) => {
         console.log(`\n[${index}] ${task.title}`);
         console.log(`Описание: ${task.description || "(нет)"}`);
@@ -55,25 +55,25 @@ function showTask() {
     });
 }
 
-// ─── Завершение задачи по индексу ──────────────────────────────────
+// ─── 6. Завершение задачи по индексу (с методами массивов) ─────────────────
 function completeTask(index) {
-    const task = tasks[index];
+    const task = tasks.find((_, taskIndex) => taskIndex === index);
 
     if (!task) {
         console.error('Задача не найдена');
         return;
     }
-    
+
     if (task.isCompleted) {
         console.warn(`Задача "${task.title}" уже выполнена`);
         return;
     }
-    
+
     // Завершаем задачу
     task.isCompleted = true;
     task.completedDate = new Date();
     completedTasks.push(task);
-    
+
     console.log(`Задача "${task.title}" завершена!`);
 }
 
@@ -114,21 +114,72 @@ function clearTasks() {
     console.log("Все задачи удалены");
  }
 
-showTask();                              
+// ─── Получение массива описаний всех задач ───────────────────────────────
+function getTaskDescriptions() {
+    return tasks.map(task => task.description);
+}
+
+// ─── Получение задач с длинным описанием (> 10 символов) ────────────────
+function getLongTasks() {
+    return tasks.filter(task => task.title.length > 10);
+}
+
+// ─── Получение задач по диапазону дат ────────────────────────────────────
+function getTasksByDateRange(startDate, endDate, isCompleted = false) {
+    let filteredTasks = tasks.filter(task => {
+        const dateToCheck = task.completedDate || task.createdDate;
+        return dateToCheck >= startDate && dateToCheck <= endDate;
+    });
+
+    if (isCompleted === true) {
+        filteredTasks = filteredTasks.filter(task => task.isCompleted === true);
+    }
+
+    return filteredTasks;
+}
+
+// ─── Удаление коротких задач (< 5 символов) ──────────────────────────────
+function clearShortTasks() {
+    const filteredTasks = tasks.filter(task => task.title.length >= 5);
+    tasks.length = 0;
+    tasks.push(...filteredTasks);
+
+    console.log("Короткие задачи удалены");
+}
+
+// ─── Обновление названия задачи по индексу ───────────────────────────────
+function updateTaskTitle(index, newTitle) {
+    const task = tasks[index];
+
+    if (!task) {
+        console.error('Задача не найдена');
+        return;
+    }
+
+    if (!isValidString(newTitle)) {
+        console.error("Ошибка: новое название задачи должно быть непустой строкой");
+        return;
+    }
+
+    task.title = newTitle;
+    console.log(`Название задачи обновлено на: "${task.title}"`);
+}
+
+showTasks();                              
 
 setTask("Купить продукты", "Молоко, хлеб, яйца");
 setTask("Сделать домашку", "JavaScript массивы");
 setTask("Позвонить маме", "");
 
-showTask();
+showTasks();
 
 completeTask(1);                         
 completeTask(0);                         
 
-showTask();
+showTasks();
 
 deleteTask(2);                        
 deleteTask(0);                       
 
 clearTasks();                         
-showTask();  
+showTasks();
